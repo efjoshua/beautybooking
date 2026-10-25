@@ -1,0 +1,28 @@
+{
+  "name": "princess-beauty-salon",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Princess Beauty Salon — salon management platform (PHP/MySQL)",
+  "scripts": {
+    "seed": "node _dev/gen-seed.js && node _dev/gen-history.js",
+    "migrate": "php db/migrate.php",
+    "migrate:fresh": "php db/migrate.php --fresh",
+    "migrate:status": "php db/migrate.php --status",
+    "images": "php db/sync-images.php",
+    "images:dry": "php db/sync-images.php --dry",
+    "test:unit": "php _dev/8-unit.php",
+    "test:backend": "php _dev/6-backend.php",
+    "test:http": "node _dev/7-http.js",
+    "test:e2e": "node _dev/9-e2e.js",
+    "test:abuse": "node _dev/10-abuse.js",
+    "test:all": "php _dev/8-unit.php && php _dev/6-backend.php && php _dev/11-finance.php && php _dev/13-payments.php && node _dev/7-http.js && node _dev/9-e2e.js && node _dev/14-pay-journey.js && node _dev/10-abuse.js",
+    "test:finance": "php _dev/11-finance.php",
+    "preflight": "php _dev/12-preflight.php",
+    "test:payments": "php _dev/13-payments.php",
+    "test:payjourney": "node _dev/14-pay-journey.js"
+  },
+  "devDependencies": {
+    "jsdom": "^30.0.1",
+    "puppeteer-core": "^25.8.0"
+  }
+}

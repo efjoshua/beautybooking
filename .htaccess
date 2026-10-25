@@ -1,0 +1,19 @@
+# Front-door hardening.
+<FilesMatch "^(package(-lock)?\.json|composer\.(json|lock)|\.gitignore)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+# Never serve raw SQL, dotfiles or internal documentation, wherever they end
+# up. Extensions rather than filenames: PAYMENTS.md was written after this file
+# and was served publicly because the rule named README.md by hand.
+<FilesMatch "\.(sql|ini|log|bak|sh|md)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+</FilesMatch>
